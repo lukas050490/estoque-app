@@ -19,7 +19,7 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ### 🧭 Navegação do Sistema  
 > Interface intuitiva e fácil de usar, com navegação clara entre as funcionalidades.  
-![Navegação do Sistema](https://link-da-imagem-navegacao.png)
+![Navegação do Sistema](https://github.com/lukas050490/estoque-app/blob/main/public/git-home.png?raw=true)
 
 ---
 
