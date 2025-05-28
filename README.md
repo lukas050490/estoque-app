@@ -10,7 +10,7 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ### 📦 Tela de Organização do Depósito  
 > Adição e retirada de quantidades dos produtos no depósito.  
-![Tela de Organização do Depósito]!(https://raw.githubusercontent.com/lukas050490/estoque-app/main/public/git-estoque-horizontal.png)
+![Tela de Organização do Depósito](https://github.com/lukas050490/estoque-app/blob/main/public/git-estoque.png?raw=true)
 
 
 ### 📊 Tela de Relatórios  
