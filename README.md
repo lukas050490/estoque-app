@@ -6,7 +6,7 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ### 🧾 Tela de Produtos  
 > Cadastro e listagem de produtos disponíveis no sistema.  
-![Tela de Produtos](https://link-da-imagem-produtos.png)
+![Tela de Produtos](https://github.com/lukas050490/estoque-app/blob/main/public/git-produtos.png?raw=true)
 
 ### 📦 Tela de Organização do Depósito  
 > Adição e retirada de quantidades dos produtos no depósito.  
