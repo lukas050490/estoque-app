@@ -16,7 +16,7 @@ const schema = yup.object({
   unit: yup.string().required(),
   quantity: yup.string().required("Quantidade obrigatória"),
   price: yup.number().typeError("Preço inválido").positive().required("Preço obrigatório"),
-   expiry: yup
+  expiry: yup
     .date()
     .nullable()
     .transform((value, originalValue) =>
@@ -50,12 +50,8 @@ export default function ProductForm({ editProduct, setEditProduct, fetchProducts
 
   useEffect(() => {
     async function loadCategories() {
-      try {
-        const { data } = await api.get("/categories")
-        setCategories(data)
-      } catch (err) {
-        console.error("Erro ao carregar categorias:", err)
-      }
+      const { data } = await api.get("/categories")
+      setCategories(data)
     }
     loadCategories()
   }, [])
@@ -67,7 +63,7 @@ export default function ProductForm({ editProduct, setEditProduct, fetchProducts
         expiry: editProduct.expiry
           ? new Date(editProduct.expiry).toISOString().split("T")[0]
           : "",
-        category: String(editProduct.category), // certifique-se de que seja string
+        category: String(editProduct.category),
       })
     } else {
       reset({
@@ -82,35 +78,7 @@ export default function ProductForm({ editProduct, setEditProduct, fetchProducts
     }
   }, [editProduct, reset])
 
-  // const onSubmit = async (data) => {
-  //   console.log("onSubmit chamado", data);
-  //   const payload = {
-  //     name: data.name,
-  //     type: data.type,
-  //     unit: data.unit,
-  //     quantity: Number(data.quantity),
-  //     price: Number(data.price),
-  //     expiry: data.type === "perishable" ? data.expiry : null,
-  //     category_id: Number(data.category),
-  //   };
-
-  //   try {
-  //     if (editProduct) {
-  //       await api.put(`/products/${editProduct.id}`, payload);
-  //       setEditProduct(null);
-  //     } else {
-  //       await api.post("/products", payload);
-  //     }
-
-  //     fetchProducts();
-  //     reset();
-  //   } catch (err) {
-  //     console.error("Erro ao salvar produto!", err);
-  //   }
-  // };
-
   const onSubmit = async (data) => {
-    console.log("onSubmit chamado", data);
     const payload = {
       name: data.name,
       type: data.type,
@@ -123,22 +91,17 @@ export default function ProductForm({ editProduct, setEditProduct, fetchProducts
 
     const toastId = toast.loading("Criando produto...");
 
-    try {
-      if (editProduct) {
-        await api.put(`/products/${editProduct.id}`, payload);
-        setEditProduct(null);
-        toast.update(toastId, { render: "Produto atualizado com sucesso!", type: "success", isLoading: false, autoClose: 2000 });
-      } else {
-        await api.post("/products", payload);
-        toast.update(toastId, { render: "Produto criado com sucesso!", type: "success", isLoading: false, autoClose: 2000 });
-      }
-
-      fetchProducts();
-      reset();
-    } catch (err) {
-      toast.update(toastId, { render: "Erro ao salvar produto!", type: "error", isLoading: false, autoClose: 3000 });
-      console.error(err);
+    if (editProduct) {
+      await api.put(`/products/${editProduct.id}`, payload);
+      setEditProduct(null);
+      toast.update(toastId, { render: "Produto atualizado com sucesso!", type: "success", isLoading: false, autoClose: 2000 });
+    } else {
+      await api.post("/products", payload);
+      toast.update(toastId, { render: "Produto criado com sucesso!", type: "success", isLoading: false, autoClose: 2000 });
     }
+
+    fetchProducts();
+    reset();
   };
 
   const handleCancel = () => {
@@ -198,7 +161,6 @@ export default function ProductForm({ editProduct, setEditProduct, fetchProducts
             {errors.category && <span>{errors.category.message}</span>}
           </div>
 
-          {/* Condicional para campo de validade */}
           {watch("type") === "perishable" && (
             <div className="Inputdiv">
               <label>Validade</label>

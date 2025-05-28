@@ -7,19 +7,16 @@ import ProductList from "../../components/ProductList";
 import { api } from "../../services/api";
 
 const Products = () => {
-  
+
   const [products, setProducts] = useState([]);
   const [editProduct, setEditProduct] = useState(null);
 
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
-    try {
-      const res = await api.get("/products");
-      setProducts(res.data);
-    } catch (err) {
-      console.error("Erro ao buscar produtos:", err);
-    }
+    const res = await api.get("/products");
+    setProducts(res.data);
+
   };
 
   useEffect(() => {
@@ -35,7 +32,7 @@ const Products = () => {
         editProduct={editProduct}
         setEditProduct={setEditProduct}
         fetchProducts={fetchProducts}
-      
+
       />
       <Content>
         <h3>Produtos Cadastrados</h3>

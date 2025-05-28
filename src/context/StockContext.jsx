@@ -7,14 +7,10 @@ export const StockProvider = ({ children }) => {
 
   useEffect(() => {
     const stored = localStorage.getItem("stockMovements");
-  
-    try {
-      const parsed = stored ? JSON.parse(stored) : [];
-      setMovements(parsed);
-    } catch (error) {
-      console.error("Erro ao carregar movimentos do localStorage:", error);
-      setMovements([]);
-    }
+
+
+    const parsed = stored ? JSON.parse(stored) : [];
+    setMovements(parsed);
   }, []);
 
   useEffect(() => {
@@ -26,7 +22,7 @@ export const StockProvider = ({ children }) => {
   };
 
   return (
-    <StockContext.Provider value={{ movements, addMovement}}>
+    <StockContext.Provider value={{ movements, addMovement }}>
       {children}
     </StockContext.Provider>
   );

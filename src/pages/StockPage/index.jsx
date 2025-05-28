@@ -15,28 +15,24 @@ const Stock = () => {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const [productsRes, movementsRes] = await Promise.all([
-          api.get("http://localhost:3001/products"),
-          api.get("http://localhost:3001/stock") // Rota que você criar
-        ]);
-        setProducts(productsRes.data);
-        setMovements(movementsRes.data);
-      } catch (err) {
-        console.error("Erro ao buscar dados:", err);
-      }
+
+      const [productsRes, movementsRes] = await Promise.all([
+        api.get("http://localhost:3001/products"),
+        api.get("http://localhost:3001/stock")
+      ]);
+      setProducts(productsRes.data);
+      setMovements(movementsRes.data);
+
     }
 
     fetchData();
   }, []);
 
   const addMovement = async (movement) => {
-    try {
-      const response = await api.post("http://localhost:3001/stock", movement);
-      setMovements((prev) => [...prev, response.data]);
-    } catch (err) {
-      console.error("Erro ao registrar movimentação:", err);
-    }
+
+    const response = await api.post("http://localhost:3001/stock", movement);
+    setMovements((prev) => [...prev, response.data]);
+
   };
 
   const movementsWithProduct = movements.map((mov) => {

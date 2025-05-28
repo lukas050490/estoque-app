@@ -14,16 +14,12 @@ const Reports = () => {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const [productsRes, movementsRes] = await Promise.all([
-          api.get("/products"),
-          api.get("/stock"),
-        ]);
-        setProducts(productsRes.data);
-        setStockMovements(movementsRes.data);
-      } catch (err) {
-        console.error("Erro ao buscar dados:", err);
-      }
+      const [productsRes, movementsRes] = await Promise.all([
+        api.get("/products"),
+        api.get("/stock"),
+      ]);
+      setProducts(productsRes.data);
+      setStockMovements(movementsRes.data);
     }
     fetchData();
   }, []);
@@ -58,7 +54,7 @@ const Reports = () => {
     const movementMonth = String(movementDate.getMonth() + 1).padStart(2, "0");
     const movementYear = String(movementDate.getFullYear());
 
-    // Se o usuário preencher dia, mês e ano: filtra pelo dia exato
+   
     if (filter.day && filter.month && filter.year) {
       return (
         movementDay === filterDay &&
@@ -66,14 +62,14 @@ const Reports = () => {
         movementYear === filterYear
       );
     }
-    // Se preencher só mês e ano: filtra pelo mês/ano
+    
     if (!filter.day && filter.month && filter.year) {
       return (
         movementMonth === filterMonth &&
         movementYear === filterYear
       );
     }
-    // Se preencher só ano: filtra pelo ano
+    
     if (!filter.day && !filter.month && filter.year) {
       return movementYear === filterYear;
     }
@@ -85,16 +81,16 @@ const Reports = () => {
 
     let filterDateLimit;
     if (filter.day && filter.month && filter.year) {
-      // Filtro por dia exato
+      
       filterDateLimit = new Date(`${filter.year}-${filter.month.padStart(2, "0")}-${filter.day.padStart(2, "0")}T23:59:59`);
     } else if (!filter.day && filter.month && filter.year) {
-      // Filtro por mês: último dia do mês
+      
       const year = Number(filter.year);
       const month = Number(filter.month);
       const lastDay = new Date(year, month, 0).getDate(); // último dia do mês
       filterDateLimit = new Date(`${year}-${String(month).padStart(2, "0")}-${String(lastDay).padStart(2, "0")}T23:59:59`);
     } else if (!filter.day && !filter.month && filter.year) {
-      // Filtro por ano: 31 de dezembro
+     
       filterDateLimit = new Date(`${filter.year}-12-31T23:59:59`);
     } else {
       return [];
@@ -173,7 +169,7 @@ const Reports = () => {
       </SectionInput>
 
       <ul>
-        {filter === null ? ( // Se o filtro não foi aplicado, exibe a lista vazia
+        {filter === null ? (
           <p>Nenhum movimento listado. Clique em "Buscar" para aplicar o filtro.</p>
         ) : filteredMovements.length === 0 ? (
           <p>

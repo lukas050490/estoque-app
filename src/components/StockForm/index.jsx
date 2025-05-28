@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import Button from "../Button";
-import {api} from "../../services/api";
+import { api } from "../../services/api";
 
 
 
@@ -14,12 +14,9 @@ export default function StockForm({ onRegisterMovement }) {
 
   useEffect(() => {
     async function fetchProducts() {
-      try {
-        const response = await api.get("http://localhost:3001/products");
-        setProducts(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-      }
+
+      const response = await api.get("http://localhost:3001/products");
+      setProducts(response.data);
     }
 
     fetchProducts();
