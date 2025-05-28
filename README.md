@@ -10,7 +10,8 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ### 📦 Tela de Organização do Depósito  
 > Adição e retirada de quantidades dos produtos no depósito.  
-![Tela de Organização do Depósito](https://link-da-imagem-deposito.png)
+![Tela de Organização do Depósito]!(https://raw.githubusercontent.com/lukas050490/estoque-app/main/public/git-estoque-horizontal.png)
+
 
 ### 📊 Tela de Relatórios  
 > Visualização de entradas e saídas filtradas por dia, mês ou ano, além do saldo atual de cada produto no estoque.  
@@ -48,9 +49,4 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ---
 
-## 🧑‍💻 Como Rodar o Projeto
-
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
 
