@@ -15,7 +15,7 @@ Este projeto é um sistema completo de organização de depósito, ideal para lo
 
 ### 📊 Tela de Relatórios  
 > Visualização de entradas e saídas filtradas por dia, mês ou ano, além do saldo atual de cada produto no estoque.  
-![Tela de Relatórios](https://link-da-imagem-relatorios.png)
+![Tela de Relatórios](https://github.com/lukas050490/estoque-app/blob/main/public/git-relatorio.png?raw=true)
 
 ### 🧭 Navegação do Sistema  
 > Interface intuitiva e fácil de usar, com navegação clara entre as funcionalidades.  
